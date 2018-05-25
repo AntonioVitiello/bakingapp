@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#14a8ad</color>
+    <color name="colorPrimaryDark">#13040c</color>
+    <color name="colorAccent">#58de65</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#DDDDDD</color>
+    <color name="black">#000000</color>
+
+    <color name="nutella">#6E5036</color>
+    <color name="nutellaLite">#9B5740</color>
+    <color name="nutellaAccent">#DC843D</color>
+    <color name="brownies">#613F37</color>
+    <color name="browniesLite">#956A49</color>
+    <color name="browniesAccent">#C8A966</color>
+    <color name="yellowcake">#FF9900</color>
+    <color name="yellowcakeLite">#FFCC00</color>
+    <color name="yellowcakeAccent">#FFFF00</color>
+    <color name="cheesecakeAccent">#FFF4C4</color>
+    <color name="cheesecake">#E1A147</color>
+    <color name="cheesecakeLite">#E4BF71</color>
+</resources>

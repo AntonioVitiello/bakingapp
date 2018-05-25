@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="200"
+    android:exitFadeDuration="200">
+
+    <!-- disabled -->
+    <item android:state_enabled="false"
+        android:drawable="@drawable/step_button_disabled" />
+
+    <!-- pressed -->
+    <item android:state_pressed="true"
+        android:drawable="@drawable/step_button_pressed" />
+
+    <!-- focused -->
+    <item android:state_focused="true"
+        android:drawable="@drawable/step_button_enabled" />
+
+    <!-- enabled -->
+    <item android:state_enabled="true"
+        android:drawable="@drawable/step_button_enabled" />
+
+</selector>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Bakingapp</string>
+    <string name="title_recipe_list">Recipes</string>
+    <string name="title_recipe_detail">Recipe Detail</string>
+    <string name="title_activity_detail">Receipe Detail</string>
+    <string name="add_to_widget">Add to Widget</string>
+
+    <string name="steps">Steps</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="prev"><![CDATA[<<]]></string>
+    <string name="next"><![CDATA[>>]]></string>
+
+    <string name="widget_norecipe_title">Backingapp</string>
+    <string name="widget_norecipe_body"><![CDATA[No recipe added.\nTo add a recipe select \"Add to Widget\" in option menu.]]></string>
+    <string name="widget_recipe_title">%s recipe</string>
+    <string name="added_to_widget">Successfully added to widget.</string>
+    <string name="no_video_available">Sorry, no video available.</string>
+
+    <!--Device offline message-->
+    <string name="no_connection_msg">No network detected.</string>
+
+    <!--REST API base URL-->
+    <string name="recipes_base_url">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/</string>
+    <string name="network_error_retry">Network error, please retry later.</string>
+
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="detailModel"
+            type="av.udacity.bakingapp.ui.databinding.StepDetailModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="av.udacity.bakingapp.ui.steps.StepDetailFragment">
+
+        <LinearLayout
+            android:id="@+id/player_container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:visibility="@{detailModel.playerContainerVisible ? View.VISIBLE : View.GONE}">
+
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{detailModel.playerVisible ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_step_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/no_video_placeholder"
+            tools:visibility="visible"
+            android:visibility="@{detailModel.stepImageVisible ? View.VISIBLE : View.GONE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/recipe_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{detailModel.recipeDetail}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="@{detailModel.detailVisible ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:gravity="center|bottom"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btn_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/step_button_selector"
+                android:enabled="@{detailModel.prevEnabled}"
+                android:foreground="@drawable/step_button_prev"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/step_button_selector"
+                android:enabled="@{detailModel.nextEnabled}"
+                android:foreground="@drawable/step_button_next"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
