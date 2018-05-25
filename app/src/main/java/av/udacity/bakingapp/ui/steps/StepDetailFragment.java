@@ -28,7 +28,6 @@ import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
@@ -36,6 +35,7 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
+import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.gson.Gson;
@@ -257,7 +257,7 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
     }
 
     private MediaSource buildMediaSource(Uri uri) {
-        return new ExtractorMediaSource(uri, new DefaultHttpDataSourceFactory("ua"), new DefaultExtractorsFactory(), null, null);
+        return new ExtractorMediaSource.Factory(new DefaultHttpDataSourceFactory("ua")).createMediaSource(uri);
     }
 
     private void releasePlayer() {
@@ -283,7 +283,7 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
 
     private void fullScreen() {
         hideSystemUI();
-        SimpleExoPlayerView playerView = mBinding.videoView;
+        PlayerView playerView = mBinding.videoView;
         playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
     }
 
