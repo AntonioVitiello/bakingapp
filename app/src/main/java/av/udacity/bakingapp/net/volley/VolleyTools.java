@@ -18,13 +18,13 @@ import timber.log.Timber;
 
 /**
  * Created by Antonio Vitiello
+ * I used Volley and Retrofit for purely demonstrative, didactic reasons.
  */
 public class VolleyTools {
     // SERVICE_BASE_URL : "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json";
     private static final String RECIPES_PATH = "baking.json";
 
     private static VolleyTools mInstance;
-    private static Context mContext;
     private RequestQueue mRequestQueue;
 
     public interface OnRemoteServiceResponse {
@@ -33,8 +33,7 @@ public class VolleyTools {
 
 
     private VolleyTools(Context context) {
-        mContext = context;
-        mRequestQueue = getRequestQueue();
+        mRequestQueue = getRequestQueue(context);
     }
 
     public static synchronized VolleyTools getInstance(Context context) {
@@ -68,16 +67,16 @@ public class VolleyTools {
                 });
     }
 
-    public RequestQueue getRequestQueue() {
+    public RequestQueue getRequestQueue(Context context) {
         if (mRequestQueue == null) {
             // Using ApplicationContext and not just Context
-            mRequestQueue = Volley.newRequestQueue(mContext.getApplicationContext());
+            mRequestQueue = Volley.newRequestQueue(context.getApplicationContext());
         }
         return mRequestQueue;
     }
 
-    public <T> void addToRequestQueue(Request<T> request) {
-        getRequestQueue().add(request);
+    public <T> void addToRequestQueue(Request<T> request, Context context) {
+        getRequestQueue(context).add(request);
     }
 
     public static String buildRecipesUrl(String path) {
@@ -108,7 +107,7 @@ public class VolleyTools {
                 });
 
         // Start JSON Request
-        getInstance(context).addToRequestQueue(gsonRequest);
+        getInstance(context).addToRequestQueue(gsonRequest, context);
     }
 
 }

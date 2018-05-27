@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Antonio Vitiello
+ * I used Volley and Retrofit for purely demonstrative, didactic reasons.
  */
 public class RetrofitTools {
     private volatile static RetrofitTools sInstance;
@@ -23,7 +24,7 @@ public class RetrofitTools {
     private RetrofitTools() {
     }
 
-    public static final RetrofitTools getInstance() {
+    public static RetrofitTools getInstance() {
         if (sInstance == null) {
             sInstance = new RetrofitTools();
             sInstance.mRecipesBaseUrl = MainApplication.getStringResource(R.string.recipes_base_url);
