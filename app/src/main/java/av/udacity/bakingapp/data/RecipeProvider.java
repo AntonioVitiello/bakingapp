@@ -21,7 +21,7 @@ import timber.log.Timber;
 
 public class RecipeProvider extends ContentProvider {
     public static final int LISTS = 100;
-    public static final int LIST_WITH_ID = 101;
+    public static final int LIST_WITH_ID = 110;
 
     private RecipeDBHelper dbHelper;
     private static final UriMatcher uriMatcher = buildUriMatcher();
