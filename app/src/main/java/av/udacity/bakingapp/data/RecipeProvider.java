@@ -1,6 +1,7 @@
 package av.udacity.bakingapp.data;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -9,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -20,12 +23,8 @@ public class RecipeProvider extends ContentProvider {
     public static final int LISTS = 100;
     public static final int LIST_WITH_ID = 101;
 
-    public static final int INGREDIENT = 200;
-    public static final int INGREDIENT_WITH_ID = 201;
-    public static final int INGREDIENT_BY_RECIPE = 202;
-
-    private static final UriMatcher uriMatcher = buildUriMatcher();
     private RecipeDBHelper dbHelper;
+    private static final UriMatcher uriMatcher = buildUriMatcher();
 
     public static UriMatcher buildUriMatcher() {
         UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -59,7 +58,8 @@ public class RecipeProvider extends ContentProvider {
                         sortOrder
                 );
 
-                result.setNotificationUri(getContext().getContentResolver(), uri);
+                ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
+                result.setNotificationUri(contentResolver, uri);
                 break;
 
             case LIST_WITH_ID:
@@ -103,7 +103,8 @@ public class RecipeProvider extends ContentProvider {
                 long id = db.insert(RecipeContract.RecipeEntry.TABLE_RECIPES_NAME, null, values);
                 if (id > 0) {
                     result = ContentUris.withAppendedId(RecipeContract.RecipeEntry.CONTENT_URI, id);
-                    getContext().getContentResolver().notifyChange(uri, null);
+                    ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
+                    contentResolver.notifyChange(uri, null);
                 } else {
                     Timber.e("DB Insert Error: %s", uri);
                 }
@@ -132,7 +133,8 @@ public class RecipeProvider extends ContentProvider {
         }
 
         if (result > 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
+            contentResolver.notifyChange(uri, null);
         }
         return result;
     }
